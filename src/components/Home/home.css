@@ -94,6 +94,7 @@ body {
   display: inline-block;
   border-radius: 200rem;
   height: 35px;
+  cursor: pointer;
 }
 
 .plus-btn:hover {
@@ -102,24 +103,56 @@ body {
   transition: 0.3s;
 }
 
+.control-page-align {
+  display: flex;
+  justify-content: center;
+}
 
+.btn-control {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1a1a1a;
+  border-radius: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
 
+.btn-control:disabled {
+  pointer-events: none;
+}
 
-
+.btn-control:hover {
+  background-color: rgba(237, 237, 237, 255);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 6px;
+  transform: translateY(-2px);
+}
 
 .books-containers {
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  max-width: 1440px; 
+  margin: 0 auto; 
 }
 
 .container-book {
   display: inline-block;
-  justify-content: space-between;
-  width: 300px;
+  width: 300px; 
   padding: 15px;
-  margin: 1%;
-  background-color: rgba(237, 237, 237, 255);
+  margin: 10px;
+  background-color: rgba(237, 237, 237, 1);
   border-radius: 20px;
+  box-sizing: border-box; 
 }
+
 
 .container-book:hover {
   background-color: rgba(214, 214, 214, 255);

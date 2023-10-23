@@ -1,28 +1,39 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { setBooks } from "../../actions/booksActions";
+import BookSVG from "../../assets/book.svg";
+import axios from "axios";
 import "./home.css";
-import BookSVG from "./book.svg";
 
 const Home = () => {
-  const [Books, setBooks] = useState([]);
-  const [amountBooks, setAmountBooks] = useState(0);
+  const dispatch = useDispatch();
+  const books = useSelector((state) => state.books.books);
   const [inputText, setInputText] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const booksPerPage = 16;
+  const totalPages = Math.ceil(books.length / booksPerPage);
+  const booksToShow = books.slice(
+    (currentPage - 1) * booksPerPage,
+    currentPage * booksPerPage
+  );
 
   useEffect(() => {
     const searchBooks = async () => {
       try {
         const response = await axios.get("http://localhost:8000/livros");
-        setBooks(response.data);
-        setAmountBooks(response.data.length);
+        dispatch(setBooks(response.data));
       } catch (error) {
         console.error("Erro ao buscar livros:", error);
       }
     };
 
     searchBooks();
-  }, []);
+  }, [dispatch]);
+
+  const amountBooks = books.length;
 
   const handleChange = (event) => {
     setInputText(event.target.value);
@@ -32,7 +43,7 @@ const Home = () => {
     <div>
       <div className="header">
         <div className="header-title">
-          <img src={BookSVG} alt="icon book" className="icon"/>
+          <img src={BookSVG} alt="icon book" className="icon" />
           <div>Biblioteca Pessoal</div>
         </div>
         <div>
@@ -94,7 +105,7 @@ const Home = () => {
       </div>
       <div className="books-containers">
         <ul>
-          {Books.map((book) => (
+          {booksToShow.map((book) => (
             <li className="container-book" key={book.id}>
               <strong>{book.title}</strong>
               <div>
@@ -106,6 +117,20 @@ const Home = () => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="control-page-align">
+        <button className="btn-control"
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Anterior
+        </button>
+        <button className="btn-control"
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Próximo
+        </button>
       </div>
     </div>
   );
