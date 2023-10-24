@@ -5,39 +5,18 @@ body {
   padding: 0;
 }
 
-.header {
-  position: relative;
-  background: linear-gradient(
-    60deg,
-    rgba(84, 58, 183, 1) 0%,
-    rgba(0, 172, 193, 1) 100%
-  );
-  color: white;
-}
-
-.icon {
-  filter: invert(100%);
-  border-radius: 200rem;
-  border: 2px solid black;
-  padding: 5px;
-  margin-right: 15px;
-}
-
-.header-title {
+.container-line-input {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px 0 20px 50px;
-  margin: 0;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  letter-spacing: 2px;
-  font-size: 48px;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .container-input {
   display: inline-flex;
-  margin: 40px 0px 20px 50px;
+  margin-left: 46px;
   padding-left: 20px;
   border-radius: 20px;
   height: 40px;
@@ -62,6 +41,22 @@ body {
 
 .search-btn:hover {
   background-color: rgba(237, 237, 237, 255);
+  cursor: pointer;
+}
+
+.clear-search-btn {
+  margin-left: 20px;
+  outline: none;
+  padding-inline: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgba(237, 237, 237, 255);
+}
+
+.clear-search-btn:hover {
+  cursor: pointer;
+  background-color: rgba(207, 207, 207, 255);
+  transition: 0.2s;
 }
 
 .input-text {
@@ -109,7 +104,6 @@ body {
 }
 
 .btn-control {
-  appearance: none;
   background-color: transparent;
   border: 2px solid #1a1a1a;
   border-radius: 10px;
@@ -122,7 +116,6 @@ body {
   text-align: center;
   text-decoration: none;
   transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: transform;
 }
 
 .btn-control:disabled {
@@ -138,66 +131,145 @@ body {
 .books-containers {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; 
-  max-width: 1440px; 
-  margin: 0 auto; 
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.no-books-container {
+  display: flex;
+  padding: 50px;
+  font-weight: 700;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .container-book {
   display: inline-block;
-  width: 300px; 
+  width: 300px;
   padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 10px;
   margin: 10px;
-  background-color: rgba(237, 237, 237, 1);
+  transition: 1s;
   border-radius: 20px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.container-book:hover {
+  background-color: rgba(0, 172, 193, 0.1);
+  translate: translateY(-20px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.subtitle-book {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 16px;
 }
 
 
-.container-book:hover {
-  background-color: rgba(214, 214, 214, 255);
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_inner {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+h2 {
+  display: flex;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.close-popup {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.floating-label-input {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.floating-label-input input {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
   transition: 0.3s;
 }
 
-/* waves animation*/
-.waves {
-  position: relative;
+.floating-label-input textarea {
   width: 100%;
-  height: 15vh;
-  margin-bottom: -7px;
-  min-height: 100px;
-  max-height: 150px;
+  height: 100px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+.floating-label-input input:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+  transition: 0.3s;
 }
 
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
+.floating-label-input label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.2s ease-in-out;
 }
 
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
+.floating-label-input input:focus + label,
+.floating-label-input .has-value {
+  transform: translateY(-20px);
+  font-size: 0.8em;
 }
 
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
+.add-button {
+  display: flex;
+  justify-content: end;
 }
 
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
+.add-button button {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 5px;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px, 0, 0);
-  }
-  100% {
-    transform: translate3d(85px, 0, 0);
-  }
+.add-button button:hover {
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 6px;
+  transform: translateY(-2px);
 }

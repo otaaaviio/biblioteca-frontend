@@ -1,0 +1,112 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+
+.header {
+  position: relative;
+  background: linear-gradient(
+    60deg,
+    rgba(84, 58, 183, 1) 0%,
+    rgba(0, 172, 193, 1) 100%
+  );
+  color: white;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0 20px 50px;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 48px;
+}
+
+.icon {
+  filter: invert(100%);
+  border-radius: 200rem;
+  border: 2px solid black;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+/* waves animation*/
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* footer */
+.social-media {
+    display: flex;
+  }
+  
+  footer {
+    background-color: rgba(237, 237, 237, 255);
+    padding-top: 2px;
+    padding-bottom: 1rem;
+  }
+  footer p {
+    text-align: center;
+  }
+  footer p span {
+    font-weight: bold;
+  }
+  footer .social-media {
+    justify-content: space-around;
+  }
+  footer .social-media ul {
+    display: flex;
+    margin-block-start: 0;
+    padding-inline-start: 0px;
+  }
+  footer .social-media ul li {
+    padding-inline: 1rem;
+    list-style-type: none;
+  }
+  footer .social-media ul li a {
+    color: black;
+    transition: 0.3s;
+  }
+  footer .social-media ul li a:hover {
+    font-size: 1.5rem;
+    transition: 0.3s;
+  }
