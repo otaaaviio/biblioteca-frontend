@@ -1,0 +1,138 @@
+/* style for page letters */
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-right: 15px;
+}
+
+h2 {
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+/*style for containers*/
+.center-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.container-book-content {
+  padding: 40px;
+  width: 700px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 16px;
+  border-radius: 10px;
+}
+
+.edit-container {
+  display: flex;
+  width: 300px;
+  position: relative;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.edit-rating {
+  display: flex;
+  align-items: baseline;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: right;
+}
+
+/*style for btns*/
+.container-btn button,
+.delete-btn button {
+  border: none;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.container-btn button:hover,
+.delete-btn button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: translateY(-2px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 6px 10px;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  margin-left: 650px;
+  margin-bottom: 100px;
+}
+
+.delete-btn button {
+  background-color: red;
+}
+
+.confirm-delete {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-delete button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: translateY(-2px);
+  box-shadow: rgba(253, 0, 0, 0.25) 0 8px 16px;
+}
+
+/*style for inputs/textareas */
+.edit-container input,
+.edit-rating input {
+  padding-inline: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.review-container textarea {
+  width: 270px;
+  min-height: 100px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.edit-container input:focus,
+.review-container textarea:focus {
+  outline: none;
+  box-shadow: rgba(237, 237, 237, 255) 0 8px 16px;
+}
+
+/* popup style */
+.popup-delete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_inner-delete {
+  position: relative;
+  padding: 20px;
+  background-color: #f3f3f3;
+  box-shadow: 0px 0px 10px 0px rgba(175, 7, 7, 0.75);
+  border-radius: 10px;
+}
+
+.close-popup-delete {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.close-popup-delete button {
+  background-color: transparent;
+}

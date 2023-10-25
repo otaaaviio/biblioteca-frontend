@@ -1,6 +1,12 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+/* header styles */
 .header {
   position: relative;
   background: linear-gradient(
@@ -74,39 +80,47 @@
   }
 }
 
-/* footer */
+/* footer styles */
 .social-media {
-    display: flex;
-  }
-  
-  footer {
-    background-color: rgba(237, 237, 237, 255);
-    padding-top: 2px;
-    padding-bottom: 1rem;
-  }
-  footer p {
-    text-align: center;
-  }
-  footer p span {
-    font-weight: bold;
-  }
-  footer .social-media {
-    justify-content: space-around;
-  }
-  footer .social-media ul {
-    display: flex;
-    margin-block-start: 0;
-    padding-inline-start: 0px;
-  }
-  footer .social-media ul li {
-    padding-inline: 1rem;
-    list-style-type: none;
-  }
-  footer .social-media ul li a {
-    color: black;
-    transition: 0.3s;
-  }
-  footer .social-media ul li a:hover {
-    font-size: 1.5rem;
-    transition: 0.3s;
-  }
+  display: flex;
+}
+
+footer {
+  background-color: rgba(237, 237, 237, 255);
+  margin-top: auto;
+  padding-top: 2px;
+  padding-bottom: 1rem;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer p span {
+  font-weight: bold;
+}
+
+footer .social-media {
+  justify-content: space-around;
+}
+
+footer .social-media ul {
+  display: flex;
+  margin-block-start: 0;
+  padding-inline-start: 0px;
+}
+
+footer .social-media ul li {
+  padding-inline: 1rem;
+  list-style-type: none;
+}
+
+footer .social-media ul li a {
+  color: black;
+  transition: 0.3s;
+}
+
+footer .social-media ul li a:hover {
+  font-size: 1.5rem;
+  transition: 0.3s;
+}

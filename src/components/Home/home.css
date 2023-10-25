@@ -7,7 +7,9 @@ body {
 
 .container-line-input {
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   margin-top: 50px;
@@ -175,8 +177,7 @@ body {
   margin-bottom: 16px;
 }
 
-
-
+/* popup styles */
 .popup {
   position: fixed;
   top: 0;
@@ -197,19 +198,19 @@ body {
   border-radius: 10px;
 }
 
+.close-popup {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 h2 {
   display: flex;
   font-size: 24px;
   margin-bottom: 30px;
-}
-
-.close-popup {
-  display: flex;
-  width: 100%;
-  justify-content: end;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
 .floating-label-input {
@@ -254,9 +255,10 @@ h2 {
   font-size: 0.8em;
 }
 
+/*add book styles*/
 .add-button {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .add-button button {

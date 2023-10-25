@@ -16,6 +16,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBooks, setFilteredBooks] = useState(books);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [update, setUpdate] = useState(true);
 
   const booksPerPage = 12;
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
@@ -32,17 +33,20 @@ const Home = () => {
       try {
         const response = await axios.get("http://localhost:8000/livros");
         dispatch(setBooks(response.data));
+        setUpdate(false);
       } catch (error) {
         console.error("Erro ao buscar livros:", error);
       }
     };
 
-    searchBooks();
+    if (update) {
+      searchBooks();
+    }
 
     if (searchTerm === "") {
       setFilteredBooks(books);
     }
-  }, [dispatch, books, searchTerm]);
+  }, [dispatch, books, searchTerm, update]);
 
   const handleSearch = () => {
     const filteredBooks = books.filter((book) =>
@@ -60,7 +64,9 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <Header />
       <div className="container-line-input">
         <div className="container-input">
@@ -91,7 +97,7 @@ const Home = () => {
         <button className="plus-btn" onClick={togglePopUp}>
           <FontAwesomeIcon icon={faPlus} size="2x" />
         </button>
-        {showPopUp && <PopUp togglePopUp={togglePopUp} />}
+        {showPopUp && <PopUp togglePopUp={togglePopUp} setUpdate={setUpdate} />}
       </div>
       {filteredBooks.length > 0 ? (
         <div className="books-containers">
@@ -163,12 +169,14 @@ const Rating = ({ rating }) => {
   );
 };
 
-const InputPopUp = ({ id, label, value, setValue }) => {
+const InputPopUp = ({ id, label, value, setValue, type }) => {
   return (
     <div className="floating-label-input">
       <input
         id={id}
-        type="text"
+        type={type}
+        min={1}
+        max={5}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder=" "
@@ -180,7 +188,7 @@ const InputPopUp = ({ id, label, value, setValue }) => {
   );
 };
 
-const PopUp = ({ togglePopUp }) => {
+const PopUp = ({ togglePopUp, setUpdate }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState();
@@ -210,6 +218,8 @@ const PopUp = ({ togglePopUp }) => {
     } catch (error) {
       console.error("Erro ao adicionar livro:", error);
     }
+
+    setUpdate(true);
   };
 
   return (
@@ -222,18 +232,21 @@ const PopUp = ({ togglePopUp }) => {
         <InputPopUp
           id="title"
           label="Título"
+          type="text"
           value={title}
           setValue={setTitle}
         />
         <InputPopUp
           id="author"
           label="Autor"
+          type="text"
           value={author}
           setValue={setAuthor}
         />
         <InputPopUp
           id="rating"
           label="Nota (1 a 5)"
+          type="number"
           value={rating}
           setValue={setRating}
         />
