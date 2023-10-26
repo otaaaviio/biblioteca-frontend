@@ -6,9 +6,11 @@ import axios from "axios";
 import Header from "../Header";
 import Footer from "../Footer";
 import "./details.css";
+import { useNavigate } from "react-router-dom";
 
 const BookDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [livro, setLivro] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
@@ -99,6 +101,8 @@ const BookDetails = () => {
 
   /* request for delete book in backend */
   const deleteBook = async () => {
+    
+
     try {
       const response = await axios.delete(`https://biblioteca-backend-production.up.railway.app/livros/${id}`);
       console.log("Resposta do backend:", response.data);
@@ -108,8 +112,7 @@ const BookDetails = () => {
       console.error("Erro ao excluir livro:", error);
     }
 
-    const home = "https://biblioteca-backend-production.up.railway.app";
-    window.location.href = home;
+    navigate("/");
   };
 
   const formatData = (data) => {
