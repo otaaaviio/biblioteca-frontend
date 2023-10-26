@@ -23,7 +23,7 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/livros/${id}`);
+        const response = await axios.get(`https://biblioteca-backend-production.up.railway.app/livros/${id}`);
         setLivro(response.data.livro);
         console.log(response.data);
         setLoading(false);
@@ -77,7 +77,7 @@ const BookDetails = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:8000/livros/${id}`,
+        `https://biblioteca-backend-production.up.railway.app/livros/${id}`,
         data
       );
 
@@ -100,7 +100,7 @@ const BookDetails = () => {
   /* request for delete book in backend */
   const deleteBook = async () => {
     try {
-      const response = await axios.delete(`http://localhost:8000/livros/${id}`);
+      const response = await axios.delete(`https://biblioteca-backend-production.up.railway.app/livros/${id}`);
       console.log("Resposta do backend:", response.data);
 
       togglePopUp();
@@ -108,7 +108,7 @@ const BookDetails = () => {
       console.error("Erro ao excluir livro:", error);
     }
 
-    const home = "http://localhost:3000";
+    const home = "https://biblioteca-backend-production.up.railway.app";
     window.location.href = home;
   };
 

@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     const searchBooks = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/livros");
+        const response = await axios.get("https://biblioteca-backend-production.up.railway.app/livros");
         dispatch(setBooks(response.data));
         setUpdate(false);
       } catch (error) {
@@ -210,7 +210,7 @@ const PopUp = ({ togglePopUp, setUpdate }) => {
         rating: rating,
       };
 
-      const response = await axios.post("http://localhost:8000/livros", data);
+      const response = await axios.post("https://biblioteca-backend-production.up.railway.app/livros", data);
 
       console.log("Resposta do backend:", response.data);
 
