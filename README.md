@@ -10,11 +10,9 @@ Site para avaliação de livros, é possivel adicionar, remover e editar livros.
 - **Redux**
 - **CSS**
 
-## Capturas de Tela 
+## Site da aplicação
 
-![app1](https://imgur.com/a/HMtRopR)
-
-![app2](https://imgur.com/a/qVt4849)
+É possivel vizualizar diretamente no site da aplicação, o link para acesso é: https://biblioteca-pessoal-otavio.up.railway.app/
 
 ## Instruções de Instalação
 
