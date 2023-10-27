@@ -64,7 +64,7 @@ h2 {
 .delete-btn {
   display: flex;
   justify-content: center;
-  margin-left: 650px;
+  margin-left: 200px;
   margin-bottom: 100px;
 }
 
@@ -135,4 +135,12 @@ h2 {
 
 .close-popup-delete button {
   background-color: transparent;
+}
+
+
+/*custom style*/
+@media screen and (min-width: 768px) {
+  .delete-btn {
+    margin-left: 650px;
+  }
 }
